@@ -1,0 +1,21 @@
+module("pulsectl")
+
+Set PulseIcon = Map(VolumeInfo("sink-form"),
+            "headphone", "",
+            "hands-free", "",
+            "headset", "",
+            "phone", "",
+            "portable", "",
+            "car", "",
+              Lookup(Volume("sink-volume"),66,"",33,"",""))
+
+layout {
+  label {
+    style = If(Ident(Volume),If(Volume("sink-mute"),"pulseaudio_muted","pulseaudio"),"hidden")
+    trigger = "volume"
+    value = If(Volume("sink-mute"),"", Str(Volume("sink-volume")) + "% ") +
+    $PulseIcon + " " + Str(Volume("source-volume")) + "% "
+    action[4] = VolumeCtl "sink-volume +1"
+    action[5] = VolumeCtl "sink-volume -1"
+  }
+}

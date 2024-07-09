@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# (c) Copyright 2024 Mick Amadio <01micko@gmail.com> GPL-3.0
+# this file is for bunsenlabs carbon-wayland to
+# sort out the right screen locker and fail if not found
+
+# prefer hyprlock
+
+cmd=''
+
+if type hyprlock >/dev/null 2>&1; then
+  cmd=hyprlock
+elif type swaylock >/dev/null 2>&1; then
+  cmd=swaylock
+else
+  echo "no wayland locker found" && exit 1
+fi
+echo $cmd
+exec $cmd

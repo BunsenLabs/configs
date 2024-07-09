@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<labwc_config>
+
+  <keyboard>
+    <default />
+    <keybind key="Print"><action name="Execute" command="grim" /></keybind>
+  </keyboard>
+
+</labwc_config>

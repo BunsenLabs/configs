@@ -1,0 +1,11 @@
+layout {
+
+  label {
+    style = "time"
+    interval = 1000
+    action = "sh -c 'yad --calendar --title=$(date +%B) --name=date'"
+    tooltip = Time("%a %b %d")+"\nPress to launch\ncalendar"
+    css = "* { font: 10pt sans; font-weight: 900; -GtkWidget-align: 0.5; -GtkWidget-hexpand: true; -GtkWidget-vexpand: true; min-width: 36px; margin-bottom: 10px; padding: 2px; }"
+    value = Time("%k:%M")
+  }
+}

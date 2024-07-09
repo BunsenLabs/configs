@@ -1,0 +1,2 @@
+# start nwg-hello
+exec /usr/bin/nwg-hello; /usr/bin/labwc --exit

@@ -1,0 +1,16 @@
+function("ToggleMinimize") {
+  [!Minimized] Minimize
+  [Minimized] UnMinimize
+}
+
+function("ToggleMaximize") {
+  [!Maximized] Maximize
+  [Maximized] UnMaximize
+}
+
+menu("winops") {
+  item(" focus%gtk-find", Focus );
+  item(" close%window-close-symbolic", Close );
+  item(" (un)minimize%window-minimize-symbolic", Function "ToggleMinimize" );
+  item(" (un)maximize%window-maximize-symbolic", Function "ToggleMaximize" );
+}

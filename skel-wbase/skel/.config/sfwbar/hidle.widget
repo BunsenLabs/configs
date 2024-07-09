@@ -1,0 +1,15 @@
+Module("idleinhibit");
+
+layout {
+  image {
+    style = If(Ident(IdleInhibitState),"module","hidden")
+    value = If(IdleInhibitState()="on",
+        "icons/misc/lock.svg",
+        "icons/misc/unlock.svg")
+    tooltip = "A \"locked\" icon indicates\n your screen decativates\n screen savers and blanking."
+    local = true
+    trigger = "idleinhibitor"
+    action[1] = SetIdleInhibitor "toggle"
+    css = "* { -GtkWidget-hexpand: true; -GtkWidget-vexpand: true; -ScaleImage-color: @theme_fg_color; min-height:24px; min-width: 24px; padding: 2px; margin: 4px; }"
+  }
+}

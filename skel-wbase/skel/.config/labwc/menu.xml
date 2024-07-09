@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<openbox_menu>
+  <menu id="root-menu" label="root-menu">
+    <item label="Web browser"><action name="Execute" command="x-www-browser" /></item>
+    <item label="Terminal"><action name="Execute" command="x-terminal-emulator" /></item>
+    <item label="File Manager"><action name="Execute" command="bl-file-manager" /></item>
+    <item label="Text Editor"><action name="Execute" command="bl-text-editor" /></item>
+  <menu id="Windows" label="Windows" execute="app-list-cut.sh" /> <!-- pipemenu -->
+  <menu id="Applications" label="Applications" execute="labwc-menu-generator -p -t 'x-terminal-emulator -e'" /> <!-- pipemenu -->
+  <menu id="Libreoffice" label="Libreoffice" execute="bl-libreoffice-pipemenu" /> <!-- pipemenu -->
+  <menu id="Screenshot" label="Screenshot" execute="bl-w-imgur-pipemenu" /> <!-- pipemenu -->
+  <menu id="Places" label="Places" execute="bl-places-pipemenu" /> <!-- pipemenu -->
+  <separator />
+  <menu id="Exit" label="Exit">
+    <item label="Reconfigure"><action name="Reconfigure" /></item>
+    <item label="Logout"><action name="Execute" command="wlogout" /></item>
+  </menu> <!-- exit-menu -->
+  </menu> <!-- root-menu -->
+</openbox_menu>

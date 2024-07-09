@@ -1,0 +1,30 @@
+if [ -r "$HOME/.azotebg" ]; then
+  . $HOME/.azotebg
+else
+  swaybg -i $HOME/Pictures/wallpapers/bunsen/default/Boron-Emerald-logo-1920x1080.png -m stretch &
+fi
+
+sfwbar &
+
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+thunar --daemon &
+
+# clipboard
+type cliphist >/dev/null 2>&1 && wl-paste --watch cliphist store &
+
+# screen blank/lock
+if type hyprlock >/dev/null >/dev/null 2>&1 ; then 
+  swayidle -w \
+	timeout 360 'hyprlock &' \
+	timeout 720 'wlopm --off \*' \
+	resume 'wlopm --on \*' \
+	before-sleep 'hyprlock &' >/dev/null 2>&1 &
+else
+  swayidle -w \
+	timeout 300 'swaylock -f -i $HOME/Pictures/wallpapers/bunsen/default/Boron-Emerald-logo-1920x1080.png' \
+	timeout 600 'wlopm --off \*' \
+	resume 'wlopm --on \*' \
+	before-sleep 'swaylock -f -i $HOME/Pictures/wallpapers/bunsen/default/Boron-Emerald-logo-1920x1080.png' >/dev/null 2>&1 &
+fi
+

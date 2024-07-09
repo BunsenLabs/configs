@@ -1,0 +1,8 @@
+layout {
+  image {
+    value = "clipman-symbolic"
+    tooltip = "Open clipboard manager"
+    action = "nwg-clipman"
+    css = "* { min-height: 18px; min-width: 18px; padding: 2px; }"
+  }
+}

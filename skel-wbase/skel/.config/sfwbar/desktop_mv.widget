@@ -1,0 +1,31 @@
+# special desktop switcher for labwc
+# this widget requires "wtype"
+# https://github.com/atx/wtype
+# or else you could use "ydotool" and udjust config accordingly
+# it also requires an xml snippet added to ~/.config/labwc/rc.xml
+layout {
+grid "btns" {
+  style = "move"
+  image {
+    value = "go-previous"
+    action = "wtype -M ctrl l -m ctrl"
+    tooltip = "Move to Desktop Left"
+    css = "* {  -GtkWidget-hexpand: true; -GtkWidget-vexpand: true; min-height: 24px; min-width: 24px; margin: 2px; }"
+    }
+  image {
+    value = "go-next"
+    action = "wtype -M ctrl r -m ctrl"
+    css = "* { -GtkWidget-hexpand: true; -GtkWidget-vexpand: true; min-height: 24px; min-width: 24px; margin: 2px; }"
+    tooltip = "Move to Desktop Right"
+    }
+  }
+}
+
+#CSS
+grid#move {
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 2px;
+  border-radius: 0px;
+  margin: 2px;
+}
