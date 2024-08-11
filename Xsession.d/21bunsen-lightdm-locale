@@ -1,6 +1,7 @@
 # workaround for session language selection in lightdm greeter
 # See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=765077#42
 # also https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=679386#107
+# and https://forums.bunsenlabs.org/viewtopic.php?id=5679
 
 # we need this only if lightdm is being used
 if pidof lightdm >/dev/null && [ -r "$HOME/.dmrc" ]
