@@ -1,0 +1,2 @@
+# This .gitignore file ensures that git recognizes its parent directory, even if empty.
+# If you add some files to this directory, .gitignore can be safely removed.
