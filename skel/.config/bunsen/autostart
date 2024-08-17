@@ -9,7 +9,7 @@
 ## will be executed to launch any applications
 ## you want to run at startup.
 ##
-## NB, like openbox's autostart script, this uses the default shell,
+## NB, like openbox's and labwc's autostart script, this uses the default shell,
 ## so "bashisms" are not supported.
 ##
 ## (Environment variables are set in ~/.config/bunsen/environment.)
@@ -25,6 +25,9 @@
 ## could benefit from your hack, please consider sharing it at:
 ## http://forums.bunsenlabs.org (registration required)
 ##
+
+## NOTE: if you are using Wayland you should not be running this file,
+## so edit 'autostart-wayland' instead.
 
 ## WINDOW MANAGER
 ## Do not edit the next line unless you have also installed any
@@ -75,7 +78,10 @@ syndaemon -i .5 -K -t -R -d &
 ### SETTINGS END
 
 ## GNOME PolicyKit authentication
+#[ -x /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 ] && \
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+#hash lxpolkit 2>/dev/null && lxpolkit &
 
 #######################################################
 ######## window-manager-dependent applications ########
