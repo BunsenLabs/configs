@@ -77,11 +77,11 @@ syndaemon -i .5 -K -t -R -d &
 
 ### SETTINGS END
 
-## GNOME PolicyKit authentication
+## PolicyKit authentication
 #[ -x /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 ] && \
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
-#hash lxpolkit 2>/dev/null && lxpolkit &
+hash lxpolkit 2>/dev/null && lxpolkit &
 
 #######################################################
 ######## window-manager-dependent applications ########
