@@ -62,7 +62,7 @@ xset r rate 250 25
 # alternative: use as compose key
 #setxkbmap -option compose:caps
 
-### TOUCHPAD: comment out the next two entries if you don't have one
+### TOUCHPAD: comment out these entries if you don't have one
 
 ## Configure touchpad. See 'man synaptics' for more info.
 ## (Now might be using libinput instead of synaptics.)
