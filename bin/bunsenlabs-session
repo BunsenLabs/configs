@@ -33,6 +33,16 @@ if [ "$W" = 'true' ]; then
     usr_envfile="$usr_confdir/bunsen/environment-wayland"
 fi
 
+# Export keyboard layout from /etc/default/keyboard
+if [ "$W" = 'true' ]; then
+    . /etc/default/keyboard
+    [ -n "$XKBMODEL" ] && export XKB_DEFAULT_MODEL=$XKBMODEL
+    [ -n "$XKBLAYOUT" ] && export XKB_DEFAULT_LAYOUT=$XKBLAYOUT
+    [ -n "$XKBVARIANT" ] && export XKB_DEFAULT_VARIANT=$XKBVARIANT
+    [ -n "$XKBOPTIONS" ] && export XKB_DEFAULT_OPTIONS=$XKBOPTIONS
+    [ -n "$XKBRULES" ] && export XKB_DEFAULT_RULES=$XKBRULES
+fi
+
 # Clean up after GDM (GDM sets the number of desktops to one).
 if [ "$W" = 'false' ]; then
     xprop -root -remove _NET_NUMBER_OF_DESKTOPS \
@@ -83,7 +93,7 @@ test -r "$usr_envfile" && . "$usr_envfile" || echo "$0: cannot source $usr_envfi
 
 # Check if user has set an alternative window manager.
 # This would be the first setting in ~/.config/bunsen/autostart.
-if [ "$W" = 'false' ]; then 
+if [ "$W" = 'false' ]; then
     win_man=openbox
 else
     win_man=labwc
