@@ -34,6 +34,12 @@ configure|abort-upgrade|abort-deconfigure|abort-remove)
         sync
         update-grub || true
     fi
+    # fix ownership of some introduced files, allow showing graphical login with greetd
+    if [ -d "$GREETD" ] && id _greetd >/dev/null 2>&1
+    then
+        chown -R _greetd:_greetd "$GREETD"
+        usermod -a -G video _greetd
+    fi
     ;;
 esac
 

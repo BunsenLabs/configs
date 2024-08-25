@@ -1,0 +1,12 @@
+#!/bin/sh
+# pass default keyboard layout to login window, via cage
+
+. /etc/default/keyboard
+
+[ -n "$XKBMODEL" ] && export XKB_DEFAULT_MODEL=$XKBMODEL
+[ -n "$XKBLAYOUT" ] && export XKB_DEFAULT_LAYOUT=$XKBLAYOUT
+[ -n "$XKBVARIANT" ] && export XKB_DEFAULT_VARIANT=$XKBVARIANT
+[ -n "$XKBOPTIONS" ] && export XKB_DEFAULT_OPTIONS=$XKBOPTIONS
+[ -n "$XKBRULES" ] && export XKB_DEFAULT_RULES=$XKBRULES
+
+exec cage "$@"

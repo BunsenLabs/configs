@@ -19,3 +19,5 @@ sysctl.d etc
 apt.conf.d etc/apt
 calendar.bunsen etc/calendar
 Xsession.d etc/X11
+greetd etc
+nwg-hello etc
