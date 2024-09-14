@@ -124,6 +124,7 @@ openbox)
     exec /usr/bin/openbox --config-file "$usr_confdir/openbox/bl-rc.xml" --startup "$bl_autostart"
     ;;
 labwc)
+    sleep 1 # temporary fix for lightdm on wayland https://forums.bunsenlabs.org/viewtopic.php?pid=137666#p137666
     exec /usr/bin/labwc --startup "$bl_autostart"
     ;;
 *)
