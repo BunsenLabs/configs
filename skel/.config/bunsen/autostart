@@ -54,13 +54,13 @@ xset b off
 ## Adjust the values according to your preferances.
 xset r rate 250 25
 
-## Add keyboard mapping.
-#xmodmap -e "keysym Insert = Multi_key"
-
 ## Disable CapsLock
 #setxkbmap -option ctrl:nocaps
 # alternative: use as compose key
 #setxkbmap -option compose:caps
+
+## Add keyboard mapping.
+#xmodmap -e "keysym Insert = Multi_key"
 
 ### TOUCHPAD: comment out the next two entries if you don't have one
 
