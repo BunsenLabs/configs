@@ -12,6 +12,7 @@ set -e
 DEFAULT_CURSOR_THEME='/usr/share/icons/DMZ-White/cursor.theme'
 BUNSEN_SESSION='/usr/bin/bunsenlabs-session'
 MAN1='/usr/share/man/man1'
+GREETD="/etc/greetd"
 
 case $1 in
 configure|abort-upgrade|abort-deconfigure|abort-remove)
