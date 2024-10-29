@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BunsenLabs Wayland
+Comment=Log in to a BunsenLabs Wayland session
+Exec=/usr/bin/bunsenlabs-session-wayland
+TryExec=/usr/bin/bunsenlabs-session-wayland
+Icon=bunsenlabs
+Type=Application
