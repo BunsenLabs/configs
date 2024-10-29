@@ -11,7 +11,7 @@ BL_SESSION=xorg
 
 # check who calls here
 case $0 in
-    *bunsenlabs-wayland-session)
+    *bunsenlabs-session-wayland)
         BL_SESSION=wayland
         export BL_SESSION
     ;;
