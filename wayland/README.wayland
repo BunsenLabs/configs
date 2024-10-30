@@ -1,0 +1,14 @@
+bunsen-configs-wayland
+======================
+
+This package holds configuration files and scripts that are featured
+on a Bunsen Labs Wayland installation.
+
+The main content is:
+
+*) Configuration for a BunsenLabs Wayland session at startup, triggered
+from a desktop file in /usr/share/wayland-sessions.
+
+*) A collection of user configuration files templates,
+stored in /usr/share/bunsen/skel. Installation of these user files is
+triggered from the Bunsenlabs Wayland session.
