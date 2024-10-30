@@ -1,0 +1,66 @@
+.TH "BUNSENLABS-SESSION-WAYLAND" "1"
+.SH "NAME"
+bunsenlabs-session-wayland \(em Starts a BunsenLabs Wayland session.
+
+.SH "DESCRIPTION"
+.PP
+\fBbunsenlabs-session-wayland\fR runs a BunsenLabs Wayland session,
+calling a compositor and starting the necessary auxiliary applications.
+There is no full session manager, so you will not be able
+to save your state from one log in to the next.
+Although labwc is the default BunsenLabs compositor or window manager,
+users can select others while continuing to use the BunsenLabs
+menu, keyboard shortcuts and autostarted applications (see below).
+.PP
+\fBbunsenlabs-session-wayland\fR does not take any command line
+arguments.
+.PP
+\fBbunsenlabs-session-wayland\fR is set as the Debian alternative
+"wayland-session-manager" so it will be run by default in a Debian wayland
+session, and a .desktop file is installed to /usr/share/wayland-sessions
+so it can be started by a display manager like LightDM.
+.PP
+On log in, \fBbunsenlabs-session-wayland\fR will run the
+~/.config/bunsen/autostart-wayland script if it exists, and will copy in the
+default file from /usr/share/bunsen/skel/.config/bunsen/autostart otherwise. You may
+place anything you want to run automatically in this file, for example:
+
+.PP
+.RS
+.PP
+.nf
+conky -c $HOME/.config/conky/BL-Carbon-wayland-minimal-conky.conf &
+wl-paste --watch cliphist store &
+.fi
+.RE
+.PP
+Make sure that each command that does not return quickly is followed by a "&" or else the script will
+stop there and further commands will not be executed. You can use the
+/usr/share/bunsen/skel/.config/bunsen/autostart-wayland file as an example for creating your
+own.
+.PP
+.SS "Window Manager:"
+Users can choose another compositor or window manager than the
+default labwc by editing the line:
+
+.PP
+.RS
+.PP
+.nf
+window_manager=labwc
+.fi
+.RE
+.PP
+near the top of ~/.config/bunsen/autostart-wayland. In such cases they will
+probably want to adjust the autostarted applications, likely with a
+new "case" clause for the new window manager. (See autostart-wayland for examples.)
+
+.SH "AUTHORS"
+Written by the BunsenLabs team
+.SH "REPORTING BUGS"
+Please report bugs at:
+.IP
+https://github.com/BunsenLabs/bunsen-configs/issues
+.SH "SEE ALSO"
+\fBbl-user-setup(1), bl-xdg-autostart(1), labwc(1).\fR
+.\" written by Michael Amadio, Wed 30 October 2024, 15:30

@@ -1,1 +1,2 @@
 wayland/wayland-sessions usr/share
+wayland/skel usr/share/bunsen
