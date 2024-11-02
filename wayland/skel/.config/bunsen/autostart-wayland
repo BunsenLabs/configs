@@ -12,7 +12,7 @@
 ## NB, like openbox's and labwc's autostart script, this uses the default shell,
 ## so "bashisms" are not supported.
 ##
-## (Environment variables are set in ~/.config/bunsen/environment.)
+## (Environment variables are set in ~/.config/bunsen/environment-wayland.)
 ##
 ## Note: some programs, such as 'nm-applet' are run via XDG autostart,
 ## from .desktop files in /etc/xdg/autostart and ~/.config/autostart.
