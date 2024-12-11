@@ -1,0 +1,135 @@
+## Bunsenlabs User config files
+## All default BunsenLabs user config files are located in /usr/share/bunsen/skel.
+## The script bl-user-setup copies them to the user $HOME directory on first login.
+## See more info with command 'bl-user-setup --help'
+
+## BunsenLabs autostart
+## ====================
+## When you login to your BunsenLabs session, this autostart script
+## will be executed to launch any applications
+## you want to run at startup.
+##
+## NB, like openbox's and labwc's autostart script, this uses the default shell,
+## so "bashisms" are not supported.
+##
+## (Environment variables are set in ~/.config/bunsen/environment-wayland.)
+##
+## Note: some programs, such as 'nm-applet' are run via XDG autostart,
+## from .desktop files in /etc/xdg/autostart and ~/.config/autostart.
+## To disable this, comment out the last line in this file:
+## "bl-xdg-autostart"
+##
+## Run 'bl-xdg-autostart --list' to list any XDG autostarted programs.
+##
+## If you do something cool with your autostart script and you think others
+## could benefit from your hack, please consider sharing it at:
+## http://forums.bunsenlabs.org (registration required)
+##
+
+## NOTE: if you are using X you should not be running this file,
+## so edit 'autostart' instead.
+
+## WINDOW MANAGER / COMPOSITOR
+## Do not edit the next line unless you have also installed any
+## necessary other programs for the different window manager / compositor,
+## and edited the window-manager-dependent section later in this file.
+## Use the window manager's or compositor's actual command, not name.
+## This should be the first uncommented line in this file:
+window_manager=labwc
+
+# test if chosen window manager is actually running (you should probably not edit this line)
+pgrep -x -u "$USER" "$window_manager" || { echo "$0: Window manager $window_manager is not running." >&2 ; exit 1;}
+
+### SETTINGS START
+
+## Add keyboard mapping.
+#xmodmap -e "keysym Insert = Multi_key"
+
+### TOUCHPAD: comment out the next two entries if you don't have one
+
+### TO DO - labwc has settings in ~/.config/labwc/rc.xml for touchpad
+### other compositors have their own settings
+
+### TOUCHPAD END
+
+### SETTINGS END
+
+## GNOME PolicyKit authentication
+#[ -x /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 ] && \
+#  /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+hash lxpolkit 2>/dev/null && lxpolkit &
+
+#######################################################
+######## window-manager-dependent applications ########
+# these will be things like panels, conky, wallpaper etc
+
+case "$window_manager" in
+labwc)
+    ## The following applications will only be started in an labwc session.
+    ## Add a new clause for your window manager, if different.
+
+    ## wallpaper
+    if [ -r "$HOME/.azotebg" ]; then
+        . $HOME/.azotebg &
+    else
+        swaybg -i /usr/share/images/bunsen/wallpapers/default/default -m stretch &
+    fi
+
+    ## Start the panel
+    sfwbar &
+
+    ## Start the Conky session (the default conkyrc will run if no sessions have been set)
+    #bl-conky-session &
+
+    ## start clipboard if installed
+    type cliphist >/dev/null 2>&1 && wl-paste --watch cliphist store &
+
+    ## start screen lock daemon
+    swayidle -w \
+	    timeout 360 'gtklock -d &' \
+	    timeout 720 'wlopm --off \*' \
+	    resume 'wlopm --on \*' \
+       	before-sleep 'gtklock -d &' >/dev/null 2>&1 &
+
+    ;;
+    # End of labwc application group.
+
+## Vague possibility for sway
+#sway)
+#   true
+#   ;;
+
+## Vague possibility for hyprland
+#hyprland)
+#    true
+#    ;;
+
+esac
+
+####### end of window-manager-dependent section #######
+#######################################################
+
+### Following entries apply to all compositors: ###
+
+## Start Thunar Daemon, if set as bl-file-manager
+if [ "$(readlink -f "$(which bl-file-manager)")" = "$(which thunar)" ]
+then
+    thunar --daemon &
+fi
+
+## bl-welcome - post-installation script, will not run in a live session
+## and only runs once. Safe to remove.
+#(sleep 10; bl-welcome --firstrun) &
+
+## bl-fortune - have the system come up with a little adage
+## These quotes are from the #! and BL forums.
+## Many of them are from the 'Off Topic' subforums of those sites,
+## so they are likely to be abstract, out-of-context...
+## ... and possibly Not Safe For Work, children, or your mental health in general.
+## Uncomment the following line to enable this (adjust the sleep seconds to taste).
+#(sleep 20; bl-fortune) &
+
+## Run the XDG autostart stuff. This requires python3-xdg to be installed.
+## See 'bl-xdg-autostart --list' for list of autostarted applications.
+bl-xdg-autostart
