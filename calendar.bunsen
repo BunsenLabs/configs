@@ -46,13 +46,19 @@ LANG=UTF-8
 /* Apr */
 09 Apr	bunsen-dev.sh created and released by smacz (2015)
 	http://crunchbang.org/forums/viewtopic.php?id=39444
+26 Apr  hhh releases "64 bit "Official" Live ISO preview" (2016)
+	https://forums.bunsenlabs.org/viewtopic.php?id=1777
+29 Apr  1st Distribution Release: BunsenLabs (Hydrogen) 8.4 (2016)
+	https://forums.bunsenlabs.org/viewtopic.php?id=1797
+	DVD: 64bit, 32bit - CD: 23bit
+	https://www.bunsenlabs.org/installation.html#downloads
 
 /* May */
-12 May	bunsen-on-archlinux (scripts) by twoion (2015)
+12 May	bunsen-on-archlinux (scripts) by nobody (2015)
 	http://crunchbang.org/forums/viewtopic.php?id=39659
 12 May	Sub-alpha BunsenLabs netinstall script released by johnraff (2015)
 	http://crunchbang.org/forums/viewtopic.php?id=39656
-23 May	Bunsen support in screenfetch by twoion (2015)
+23 May	Bunsen support in screenfetch by nobody (2015)
 	http://crunchbang.org/forums/viewtopic.php?id=39728
 
 /* Jun */
@@ -65,7 +71,7 @@ LANG=UTF-8
 09 Jul	hhh after a crash-course learning live-builds was heard saying (2015)
 	Sue me. I want to get... this... train... rolling...
 	http://crunchbang.org/forums/viewtopic.php?pid=434019#p434019
-11 Jul	twoion announces BunsenLabs Debian Repos online (2015)
+11 Jul	nobody announces BunsenLabs Debian Repos online (2015)
 	http://crunchbang.org/forums/viewtopic.php?id=39993
 29 Jul	hhh releases BunsenLabs 8.1 (Hydrogen) LiveISOs (alpha2) 32|64 (2015)
 	http://crunchbang.org/forums/viewtopic.php?id=39994
@@ -77,7 +83,7 @@ LANG=UTF-8
 13 Sep	ohnonot's CB fortune package created and carried to BL (2015)
 	Get your BL quote's in there and be famous.
 	https://forums.bunsenlabs.org/viewtopic.php?id=644
-28 Sep	twoion announces the opening of the BunsenLabs Forum (2015)
+28 Sep	nobody announces the opening of the BunsenLabs Forum (2015)
 	https://forums.bunsenlabs.org/viewtopic.php?id=17
 
 /* Oct */
