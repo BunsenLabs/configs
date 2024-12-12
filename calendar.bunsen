@@ -1,6 +1,8 @@
 /*
  *	 BunsenLabs Linux History Calendar
  *
+ * Started by: Sector11 - 20 Feb 2016
+ *
  * TEST with a complete leap-year:
  *
  * calendar -t 20160101 -f /etc/calendar/calendar.bunsen -A 366
