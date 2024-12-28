@@ -12,7 +12,7 @@ set -e
 DEFAULT_CURSOR_THEME='/usr/share/icons/DMZ-White/cursor.theme'
 BUNSEN_SESSION='/usr/bin/bunsenlabs-session'
 MAN1='/usr/share/man/man1'
-GREETD="/etc/greetd"
+GREETD="/etc/greetd/greetd.conf"
 
 case $1 in
 configure|abort-upgrade|abort-deconfigure|abort-remove)
@@ -36,9 +36,9 @@ configure|abort-upgrade|abort-deconfigure|abort-remove)
         update-grub || true
     fi
     # fix ownership of some introduced files, allow showing graphical login with greetd
-    if [ -d "$GREETD" ] && id _greetd >/dev/null 2>&1
+    if [ -f "$GREETD" ] && id _greetd >/dev/null 2>&1
     then
-        chown -R _greetd:_greetd "$GREETD"
+        chown _greetd:_greetd "$GREETD"
         usermod -a -G video _greetd
     fi
     ;;
