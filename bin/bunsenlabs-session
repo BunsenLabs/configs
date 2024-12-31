@@ -99,8 +99,8 @@ else
 fi
 
 # Check if user has set an alternative window manager.
-# This would be the first setting in ~/.config/bunsen/autostart.
-# just use first uncommented line of file, then break
+# This would be the first setting in $usr_autostart
+# just use first uncommented line of file, then break.
 [ -r "$usr_autostart" ] && {
     while read -r first rest
     do
@@ -118,16 +118,18 @@ fi
 
 hash "$win_man" 2>/dev/null || { echo "$0: Window manager command \"$win_man\" not found" >&2; exit 1;}
 
+[ "$BL_SESSION" = 'wayland' ] && sleep 1 # temporary fix for lightdm on wayland https://forums.bunsenlabs.org/viewtopic.php?pid=137666#p137666
+
 # Run the window manager.
 case "$win_man" in
 openbox)
     exec /usr/bin/openbox --config-file "$usr_confdir/openbox/bl-rc.xml" --startup "$bl_autostart"
     ;;
 labwc)
-    sleep 1 # temporary fix for lightdm on wayland https://forums.bunsenlabs.org/viewtopic.php?pid=137666#p137666
     exec /usr/bin/labwc --startup "$bl_autostart"
     ;;
 *)
+# NOTE: in this case $bl_autostart and $usr_autostart are run in a subshell and cannot export variables.
     (
     until pgrep -x "$win_man"
     do
